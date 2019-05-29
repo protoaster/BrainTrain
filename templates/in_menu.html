@@ -1,0 +1,130 @@
+{{ define "layout" }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>BrainTrain</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicons/favicon.ico">
+  <link rel="stylesheet" href="css/overview.css">
+</head>
+
+<body>
+
+  <!-- navigation -->
+  <nav class="navbar is-transparent ">
+    <div class="container has_background_primary_green">
+      <div class="navbar-brand has_background_secondary_green is-marginless" style="width: 20%">
+        <a class="navbar-item" href="in_startseite">
+          <img src="logo/Logo.svg" />
+          <h4 class="Logo_text"><span>Brain</span>Train</h4>
+        </a>
+      </div>
+
+      <div id="navbarBrainTrain" class="navbar-menu is-marginless">
+        <div class="navbar-start">
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+
+            <a href="in_karteikarten_erstellen" style="margin-right: 100px" class="button is-warning text_white has-text-weight-semibold has-text-centered">Neue Kartei</a>
+            <div class="columns" style="text-align: right">
+              <div class="column">
+                <p class="text_white has-text-weight-semibold">
+                  <nobr>{{.Nutzername}}</nobr>
+                </p>
+                <a href="out_startseite" class="text_white">
+                  <p class="logout_text">Logout</p>
+                </a>
+              </div>
+              <div class="column profil_pic">
+                <img src="icons/Mein-Profil.svg">
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- /navigation -->
+
+  <!--  MENU  -->
+  <section class="container has_background_primary_blue">
+
+    <div class="columns is-marginless text_color_white">
+      <div class="column container is-one-fifth">
+        <aside class="menu">
+          <ul class="menu-list ">
+            <li>
+              <a href="in_startseite" class="text_white">
+                <div class="columns">
+                  <div class="column is-2"><img style="max-width: 20px;" src="icons/Home.svg" /></div>
+                  <div class="column">
+                    <p>Home</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="in_karteikaesten" class="text_white">
+                <div class="columns">
+                  <div class="column is-2"><img style="max-width: 20px;" src="icons/Karteikasten.svg" /></div>
+                  <div class="column">
+                    <p>Karteikästen</p>
+                  </div>
+                  <div class="column is-2"><span class="tag is-success">{{.Karteien}}</span></div>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="in_meine_karteikaesten" class="text_white">
+                <div class="columns">
+                  <div class="column is-2"><img style="max-width: 20px;" src="icons/Meine-Karteien.svg" /></div>
+                  <div class="column">
+                    <p>Meine Karteikästen</p>
+                  </div>
+                  <div class="column is-2"><span class="tag is-success">{{.MeineKarteien}}</span></div>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="in_profil" class="text_white">
+                <div class="columns">
+                  <div class="column is-2"><img style="max-width: 20px;" src="icons/Mein-Profil.svg" /></div>
+                  <div class="column">
+                    <p>Mein Profil</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+
+          </ul>
+        </aside>
+      </div>
+      <!--  /MENU  -->
+
+      {{ template "content" .}}
+    </div>
+
+  </section>
+
+
+
+
+
+</body>
+
+</html>
+{{ end }}

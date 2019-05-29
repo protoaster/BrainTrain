@@ -1,0 +1,271 @@
+{{ define "content" }}
+<div class="column is-marginles has_background_primary_grey text_black kart_height">
+  <div class="column is-marginles has_background_primary_grey text_black kart_height">
+    <!-- CONTENT -->
+    <h1 class="text_black"><b>Karteikästen</b></h1>
+    <h2 class="text_black">Im Karteikasten findest du alle öffentlichen Karteien</h2>
+
+    <div class="sort_drop">
+      <!-- SUCHE -->
+      <div class="search is-pulled-right">
+        <input class="input" type="text" placeholder="Suche">
+      </div>
+
+
+      <!-- DROPDOWN -->
+      <div class="dropdown is-right is-active is-pulled-right">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Sortieren nach</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <!--		DROPDOWN CONTENT							-->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Karteikästen -->
+
+    <div class="columns is-multiline move_right">
+      <div class="column is-12 head_k">Naturwissenschaften</div>
+      {{range .Naturwissenschaften}}
+      <div class="column is-one-quarter kartei">
+        <div class="has_background_primary_green kartei_head">{{.Unterkategorie}}</div>
+        <div class="has_background_white kartei">
+          <div class="columns">
+            <div class="column">
+              <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+            </div>
+            <div class="column is-5 is-paddingless">
+
+              <div id="hex1" class="hexagon-wrapper">
+                <div id="color1" class="hexagon">
+                  <h1 id="hex_text">{{.Anzahl}}</h1>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="has_background_white kartei">
+          <p class="kartei_content">{{.Beschreibung}}</p>
+
+
+
+          <a href="in_lernen_frage" class="button is-warning is-pull kartei_button">Lernen</a>
+
+        </div>
+      </div>
+
+
+
+
+
+      {{end}}
+
+
+      <div class="column is-12 head_k">Sprachen</div>
+      {{range .Sprachen}}
+      <div class="column is-one-quarter kartei">
+        <div class="has_background_primary_green kartei_head">{{.Unterkategorie}}</div>
+        <div class="has_background_white kartei">
+          <div class="columns">
+            <div class="column">
+              <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+            </div>
+            <div class="column is-5 is-paddingless">
+
+              <div id="hex1" class="hexagon-wrapper">
+                <div id="color1" class="hexagon">
+                  <h1 id="hex_text">{{.Anzahl}}</h1>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="has_background_white kartei">
+          <p class="kartei_content"> {{.Beschreibung}}</p>
+
+        </div>
+        <div class="has_background_white kartei">
+          <a href="in_lernen_frage" class="button is-warning is-pull kartei_button">Lernen</a>
+        </div>
+
+      </div>
+
+
+
+
+
+      {{end}}
+
+
+      <div class="column is-12 head_k">Gesellschaft</div>
+      {{range .Gesellschaft}}
+      <div class="column is-one-quarter kartei">
+        <div class="has_background_primary_green kartei_head">{{.Unterkategorie}}</div>
+        <div class="has_background_white kartei">
+          <div class="columns">
+            <div class="column">
+              <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+            </div>
+            <div class="column is-5 is-paddingless">
+
+              <div id="hex1" class="hexagon-wrapper">
+                <div id="color1" class="hexagon">
+                  <h1 id="hex_text">{{.Anzahl}}</h1>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="has_background_white kartei">
+          <p class="kartei_content"> {{.Beschreibung}}</p>
+
+        </div>
+        <div class="has_background_white kartei">
+          <a href="in_lernen_frage" class="button is-warning is-pull kartei_button">Lernen</a>
+        </div>
+
+      </div>
+
+
+
+
+
+      {{end}}
+
+
+      <div class="column is-12 head_k">Wirtschaft</div>
+      {{range .Wirtschaft}}
+      <div class="column is-one-quarter kartei">
+        <div class="has_background_primary_green kartei_head">{{.Unterkategorie}}</div>
+        <div class="has_background_white kartei">
+          <div class="columns">
+            <div class="column">
+              <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+            </div>
+            <div class="column is-5 is-paddingless">
+
+              <div id="hex1" class="hexagon-wrapper">
+                <div id="color1" class="hexagon">
+                  <h1 id="hex_text">{{.Anzahl}}</h1>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="has_background_white kartei">
+          <p class="kartei_content"> {{.Beschreibung}}</p>
+
+        </div>
+        <div class="has_background_white kartei">
+          <a href="in_lernen_frage" class="button is-warning is-pull kartei_button">Lernen</a>
+        </div>
+
+      </div>
+
+      {{end}}
+
+      <div class="column is-12 head_k">Geisteswissenschaften</div>
+      {{range .Geisteswissenschaften}}
+      <div class="column is-one-quarter kartei">
+        <div class="has_background_primary_green kartei_head">{{.Unterkategorie}}</div>
+        <div class="has_background_white kartei">
+          <div class="columns">
+            <div class="column">
+              <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+            </div>
+            <div class="column is-5 is-paddingless">
+
+              <div id="hex1" class="hexagon-wrapper">
+                <div id="color1" class="hexagon">
+                  <h1 id="hex_text">{{.Anzahl}}</h1>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="has_background_white kartei">
+          <p class="kartei_content"> {{.Beschreibung}}</p>
+
+        </div>
+        <div class="has_background_white kartei">
+          <a href="in_lernen_frage" class="button is-warning is-pull kartei_button">Lernen</a>
+        </div>
+
+      </div>
+
+
+      {{end}}
+
+      <div class="column is-12 head_k">Sonstige</div>
+      {{range .Sonstige}}
+      <div class="column is-one-quarter kartei">
+        <div class="has_background_primary_green kartei_head">{{.Unterkategorie}}</div>
+        <div class="has_background_white kartei">
+          <div class="columns">
+            <div class="column">
+              <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+            </div>
+            <div class="column is-5 is-paddingless">
+
+              <div id="hex1" class="hexagon-wrapper">
+                <div id="color1" class="hexagon">
+                  <h1 id="hex_text">{{.Anzahl}}</h1>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="has_background_white kartei">
+          <p class="kartei_content"> {{.Beschreibung}}</p>
+
+        </div>
+        <div class="has_background_white kartei">
+          <a href="in_lernen_frage" class="button is-warning is-pull kartei_button">Lernen</a>
+        </div>
+
+      </div>
+
+
+
+
+
+      {{end}}
+
+
+    </div>
+
+
+  </div>
+</div>
+{{end}}

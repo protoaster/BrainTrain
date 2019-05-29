@@ -1,0 +1,197 @@
+{{ define "content" }}
+
+<div class="column is-marginles has_background_primary_grey text_black column_height">
+
+
+  <h1 class="text_black"><b>Karteikasten erstellen / Karteikasten bearbeiten</b></h1>
+  <h2 class="text_black">Hier kannst du eine neue Kartei erstellen oder eine vorhandene nach Bedarf bearbeiten.</h2>
+  <div class="has_background_white column_help_be">
+    <div class="green_line"></div>
+
+    <div class="columns">
+      <div class="column is-2">
+        <p class="nummer">Name</p>
+        <h3>{{.AktuellerKarteikasten.Titel}}</h3>
+      </div>
+
+      <div class="column is-4">
+        <p class="nummer">Kategorie</p>
+        <h3>{{.AktuellerKarteikasten.Kategorie}} <i class="arrow right"></i> {{.AktuellerKarteikasten.Unterkategorie}}</h3>
+      </div>
+
+      <div class="column is-1" style="margin-left: -5%;">
+        <p class="nummer">Fortschritt</p>
+        <h3>{{.AktuellerKarteikasten.FortschrittP}}%</h3>
+      </div>
+
+      <div class="column is-4" style="padding-left: 8%; margin-left: -5%;">
+        <div class="columns">
+          <div class="column is-5 wd_column" style="margin-top: 4.6%">
+            <p class="card_number">Wiederholung</p>
+          </div>
+          <div class="column wd_column">0</div>
+          <div class="column wd_column">1</div>
+          <div class="column wd_column">2</div>
+          <div class="column wd_column">3</div>
+          <div class="column wd_column">4</div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-5 card_column">
+            <p class="card_number">Karten</p>
+          </div>
+          {{range $p := .Fach}}
+          <div class="column card_column" style="font-weight: bold;">{{$p}}</div>
+          {{end}}
+        </div>
+
+
+
+
+
+      </div>
+
+      <div class="column is-2" style="margin-right: -15%; margin-top: -5%"> </div>
+      <div class="column is-2 is-paddingless">
+        <div id="hex1" class="hexagon-wrapper">
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text">{{.AktuellerKarteikasten.Anzahl}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-marginless" style="padding-left: 10%">
+    <div class="column has_background_white is-paddingless" style="margin-left: 2%; margin-bottom: 1%;">
+      <div class="green_line"> </div>
+
+      <div class="field is-horizontal" style="margin-right: 3%; margin-top: 3%;">
+        <div class="field-label is-normal">
+          <label class="label text_black" style="margin-right: -35%;">Titel</label>
+        </div>
+        <div class="field-body" style="padding-top: 0.7%;font-weight: bold;">
+          <div class="field" style="margin-left: 7%;">
+            <p class="control">
+              <p>{{.AktuelleKarte.Titel}}</p>
+            </p>
+          </div>
+        </div>
+
+        <div id="hex2" class="hexagon-wrapper">
+          {{if eq .AktuelleKarte.NutzerFach "0"}}
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text2">0 </h1>
+          </div>
+          {{else}}
+            <div id="color2" class="hexagon">
+              <h1 id="hex_text2">0 </h1>
+            </div>
+            {{end}}
+        </div>
+
+        <div id="hex2" class="hexagon-wrapper">
+          {{if eq .AktuelleKarte.NutzerFach "1"}}
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text2">1 </h1>
+          </div>
+          {{else}}
+            <div id="color2" class="hexagon">
+              <h1 id="hex_text2">1 </h1>
+            </div>
+            {{end}}
+        </div>
+
+        <div id="hex2" class="hexagon-wrapper">
+          {{if eq .AktuelleKarte.NutzerFach "2"}}
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text2">2 </h1>
+          </div>
+          {{else}}
+            <div id="color2" class="hexagon">
+              <h1 id="hex_text2">2 </h1>
+            </div>
+            {{end}}
+        </div>
+
+        <div id="hex2" class="hexagon-wrapper">
+          {{if eq .AktuelleKarte.NutzerFach "3"}}
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text2">3 </h1>
+          </div>
+          {{else}}
+            <div id="color2" class="hexagon">
+              <h1 id="hex_text2">3 </h1>
+            </div>
+            {{end}}
+        </div>
+
+        <div id="hex2" class="hexagon-wrapper">
+          {{if eq .AktuelleKarte.NutzerFach "4"}}
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text2">4 </h1>
+          </div>
+          {{else}}
+            <div id="color2" class="hexagon">
+              <h1 id="hex_text2">4 </h1>
+            </div>
+            {{end}}
+        </div>
+
+
+      </div>
+
+
+
+      <div class="field is-horizontal" style="margin-right: 5%; margin-top: 3%;">
+        <div class="field-label is-normal">
+          <label class="label text_black">Frage</label>
+        </div>
+        <div class="field-body" style="padding-top: 1%;">
+          <div class="field">
+            <p class="control text_black">
+              {{.AktuelleKarte.Frage}}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal" style="margin-bottom: 5%; margin-right: 5%; margin-top: 3%;">
+        <div class=" field-label is-normal">
+          <label class="label text_black">Antwort</label>
+        </div>
+        <div class="field-body" style="padding-top: 1%;">
+          <div class="field-body" style="padding-top: 1%;">
+            <div class="field">
+              <p class="control">
+                <a href="in_lernen_antwort" class="button is-medium is-warning text_white" style="padding-left: 10%; padding-right: 10%"><b>Aufdecken</b></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal" style="margin-bottom: 5%; margin-right: 5%;  margin-top: 3%;">
+        <div class="field-label is-normal">
+          <label class="label"></label>
+        </div>
+        <div class="field-body is-centered" style="padding-top: 1%;">
+          <div class="field">
+            <p class="control">
+              <a href="in_lernen_frage" class="button is-warning is-pulled-right text_white" style="margin-bottom: 5%;"><b>Überspringen</b></a>
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+</div>
+{{end}}

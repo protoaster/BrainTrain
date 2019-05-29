@@ -1,0 +1,114 @@
+{{ define "content" }}
+
+
+<div class="column is-marginles has_background_primary_grey text_black column_height">
+  <h1 class="text_black"><b>Karteikasten erstellen / Karteikasten bearbeiten</b></h1>
+  <h2 class="text_black">Hier kannst du eine neue Kartei erstellen oder eine vorhandene nach Bedarf bearbeiten.</h2>
+  <div class="has_background_white column_help_be">
+    <div class="green_line"></div>
+
+    <div class="columns">
+      <div class="column is-2">
+        <p class="nummer">Name</p>
+        <h3>{{.AktuellerKarteikasten.Titel}}</h3>
+      </div>
+
+      <div class="column">
+        <p class="nummer">Kategorie</p>
+        <h3>{{.AktuellerKarteikasten.Kategorie}} <i class="arrow right"></i> {{.AktuellerKarteikasten.Unterkategorie}}</h3>
+      </div>
+
+      <div class="column is-2">
+        <p class="nummer">Fortschritt</p>
+        <h3>{{.AktuellerKarteikasten.FortschrittP}}%</h3>
+      </div>
+
+      <div class="column is-2"> <a class="button is-success is-small text_white" style="margin-top: 14%; margin-left: 25%;"><b>Bearbeiten</b></a> </div>
+      <div class="column is-2 is-paddingless">
+        <div id="hex1" class="hexagon-wrapper">
+          <div id="color1" class="hexagon">
+            <h1 id="hex_text">{{.AktuellerKarteikasten.Anzahl}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-marginless text_karten">
+    <div class="column  is-paddingless is-3">
+      <div class="columns is-marginless text_karten is-multiline">
+        <!-- Karteikarten -->
+        {{range .AlleKarten}}
+        <div class="column has_background_white is-paddingless is-12" style="margin-bottom: 7%;">
+          <div class="green_line"> </div>
+          <p class="nummer"># {{.Num}}</p>
+          <h3>{{.Titel}}</h3>
+
+          <a href="" class="button is-small is-danger is-pulled-right  delete1"><img style="max-width: 20px;" src="icons/Delete.svg"></a>
+          <a href="" class="button is-small is-success is-pulled-right delete1">Bearbeiten</a>
+
+        </div>
+        {{end}}
+
+
+      </div>
+    </div>
+
+
+    <div class="column has_background_white is-paddingless" style="margin-left: 2%; margin-bottom: 1%;">
+      <div class="green_line"> </div>
+
+      <div class="field is-horizontal" style="margin-right: 5%; margin-top: 3%;">
+        <div class="field-label is-normal">
+          <label class="label">Titel</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <input class="input " type="text" readonly>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal" style="margin-right: 5%; margin-top: 3%;">
+        <div class="field-label is-normal">
+          <label class="label">Frage</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <textarea id="fragenfeld" class="textarea" placeholder=""></textarea>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal" style="margin-bottom: 5%; margin-right: 5%; margin-top: 3%;">
+        <div class=" field-label is-normal">
+          <label class="label">Antwort</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control">
+              <textarea id="antwortfeld" class="textarea" placeholder=""></textarea>
+            </p>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="button is-warning is-center text_white" style="margin-left: 40%; margin-bottom: 5%;"><b>Speichern</b></a>
+      <a href="#" class="button is-danger is-center text_white" style="margin-left: 2%;"><b>Abbrechen</b></a>
+    </div>
+
+    <script>
+      var simplemde = new SimpleMDE({
+        element: document.getElementById("fragenfeld")
+      });
+      var simplemde2 = new SimpleMDE({
+        element: document.getElementById("antwortfeld")
+      });
+    </script>
+
+  </div>
+</div>
+{{end}}

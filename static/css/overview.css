@@ -1,0 +1,371 @@
+.has_background_primary_green {
+  background-color: #2ECC71;
+}
+
+.has_background_secondary_green {
+  background-color: #27AE60;
+}
+
+.has_background_primary_grey {
+  background-color: #ECF0F1;
+}
+
+.has_background_primary_blue {
+  background-color: #34495E;
+}
+
+.has_background_white {
+  background-color: #fff;
+}
+
+.text_white {
+  color: #FFF !important;
+}
+
+.text_black {
+  color: #000;
+}
+
+.Logo_text {
+  font-family: Roboto extralight, sans-serif;
+  font-size: 1.5rem;
+  padding-left: 10%;
+  color: white;
+}
+
+.Logo_text span {
+  font-weight: 600;
+}
+
+.navbar {
+  min-height: 50px;
+}
+
+.navbar_element {
+  margin-right: 0.8rem;
+}
+
+.column_height1 {
+  min-height: 100vh
+}
+
+.profil_pic {
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+body {
+  background-color: #ECF0F1
+}
+
+.navbar {
+  background-color: #ECF0F1
+}
+
+/* k_bearbeiten.css */
+.column_height {
+  min-height: 100vh;
+  padding-left: 3%;
+}
+
+h2 {
+  font-size: 15px;
+  margin-left: 3.1%;
+}
+
+h3 {
+  font-weight: bold;
+  margin-left: 2%;
+  color: black;
+}
+
+h4 {
+  white-space: nowrap;
+}
+
+.green_line {
+  min-height: 3px;
+  background-color: #27AE60;
+}
+
+.column_help_be {
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.nummer {
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.delete1 {
+  margin-right: 4%;
+  margin-bottom: 5%;
+  margin-top: 4%
+}
+
+.card_column {
+  margin: 0;
+  padding: 0;
+}
+
+.wd_column {
+  margin: 0;
+  margin-top: 5%;
+  padding: 0;
+}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+j {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+#hex_text {
+  margin-top: 16%;
+  margin-left: 3%;
+  z-index: 1;
+  position: relative;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#hex1 {
+  width: 40px;
+  height: 40px;
+  margin-left: 25%;
+  margin-top: 15%;
+  color: #FFF;
+}
+
+#color1 {
+  background-color: #27AE60;
+}
+
+#hex_text2 {
+  z-index: 1;
+  position: relative;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#hex2 {
+  width: 30px;
+  height: 30px;
+  color: #FFF;
+  margin: 1%;
+}
+
+#color2 {
+  background-color: #2C3E50;
+}
+
+.hexagon-wrapper {
+  text-align: center;
+  margin: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.hexagon {
+  height: 100%;
+  width: calc(100% * 0.57735);
+  display: inline-block;
+}
+
+.hexagon:before {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(60deg);
+}
+
+.hexagon:after {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(-60deg);
+}
+
+/* k_erstellen.css */
+.column_height {
+  min-height: 100vh;
+  padding-left: 3%;
+}
+
+.column_help {
+  text-align: center;
+  margin: 15%;
+  margin-top: 5%;
+}
+
+.green_line {
+  min-height: 3px;
+  background-color: #27AE60;
+}
+
+.erstellen {
+  text-align: right;
+  padding: 2%;
+}
+
+/*karteikaesten.css */
+h1 {
+  font-size: 30px;
+  margin-left: 3%;
+}
+
+h5 {
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.sort_drop {
+  width: 100%;
+  padding-top: 10px;
+  min-height: 75px;
+}
+
+.search {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.head_k {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5%;
+  margin-left: -0.8%;
+}
+
+.kartei {
+  padding: 5px;
+}
+
+.kartei_head {
+  text-align: center;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.kart_height {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.move_right {
+  margin-left: 3%;
+}
+
+.move_right2 {
+  margin-left: 10%;
+}
+
+.move_left {
+  margin-right: 1%;
+}
+
+.kartei_content_head {
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.kartei_content {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.kartei_button {
+  width: 50%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 25%;
+}
+
+/*registrieren.css*/
+.box {
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.normal_text {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 50px;
+  font-size: 15px;
+}
+
+.green_line {
+  min-height: 3px;
+  background-color: #27AE60;
+}
+
+.anmeldung_input {
+  margin-left: 10%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.info_text {
+  font-size: 14px;
+}
+
+.checkbox {
+  text-align: left;
+}
+
+/*startseite.css*/
+.box {
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.startseite_text {
+  font-size: 40px
+}
+
+.normal_text_middle {
+  font-size: 30px;
+}
+
+.brain {
+  color: #27AE60
+}
+
+.train {
+  color: #2ECC71
+}
+
+.green_line {
+  min-height: 3px;
+  background-color: #27AE60;
+}

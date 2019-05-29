@@ -1,0 +1,160 @@
+{{ define "content" }}
+
+<div class="column is-marginles has_background_primary_grey text_black kart_height">
+  <!-- CONTENT -->
+  <h1 class="text_black"><b>Karteikästen</b></h1>
+  <h2 class="text_black">Hier findest du deine Karteien, sowie öffentliche Karteien, die du angefangen hast zu lernen.</h2>
+
+  <div class="sort_drop">
+    <!-- SUCHE -->
+    <div class="search is-pulled-right">
+      <input class="input" type="text" placeholder="Suche">
+    </div>
+
+
+    <!-- DROPDOWN -->
+    <div class="dropdown is-right is-active is-pulled-right">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+          <span>Sortieren nach</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <!--		DROPDOWN CONTENT							-->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Karteikästen -->
+
+  <div class="columns is-multiline" style="margin-left:3%">
+    <div class="column is-12 head_k">Selbst erstellte Karteikästen</div>
+    {{range .MeineKarteikaesten}}
+
+    <div class="column is-one-quarter kartei">
+      <div class="has_background_primary_green kartei_head">
+        <p>{{.Kategorie}}
+          <j class="arrow right"></j>
+        </p> {{.Unterkategorie}}
+      </div>
+      <div class="has_background_white kartei">
+        <div class="columns">
+          <div class="column">
+            <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+          </div>
+          <div class="column is-5 is-paddingless">
+
+            <div id="hex1" class="hexagon-wrapper">
+              <div id="color1" class="hexagon">
+                <h1 id="hex_text">{{.Anzahl}}</h1>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="has_background_white kartei">
+        <p class="kartei_content">{{.Beschreibung}}</p>
+
+      </div>
+
+      <div class="has_background_white kartei">
+        <div class="columns kartei_content" style="margin-top:20px;">
+          <div class="column">
+            <nobr>Sichtbarkeit:</nobr>
+          </div>
+          <div class="column"><b>{{.Sichtbarkeit}}</b></div>
+        </div>
+        <div class="columns kartei_content">
+          <div class="column">
+            <nobr>Fortschritt:</nobr>
+          </div>
+          <div class="column"><b>{{.FortschrittP}}%</b></div>
+        </div>
+      </div>
+
+      <div class="has_background_white kartei is-paddingless">
+        <div class="columns kartei_content">
+          <div class="column is-one-third"><a href="in_lernen_frage" class="button is-warning is-small is-left">Lernen</a></div>
+          <div class="column is-one-third"><a href="in_karteikasten_bearbeiten" class="button is-success is-small is-centered">Bearbeiten</a></div>
+          <div class="column is-one-third"><a href="" class="button is-danger is-small move_right2"> <img style="max-width: 20px;" src="icons/Delete.svg" /> </a></div>
+        </div>
+
+      </div>
+    </div>
+    {{end}}
+
+
+
+
+    <div class="column is-12 head_k">Gelernte Karteikästen anderer Nutzer</div>
+    {{range .GespeicherteKarteikaesten}}
+    <div class="column is-one-quarter kartei">
+      <div class="has_background_primary_green kartei_head">
+        <p>{{.Kategorie}}
+          <j class="arrow right"></j>
+        </p> {{.Unterkategorie}}
+      </div>
+      <div class="has_background_white kartei">
+        <div class="columns">
+          <div class="column">
+            <h5><a class="text_black" href="in_karteikasten_anschauen">{{.Titel}}</a></h5>
+          </div>
+          <div class="column is-5 is-paddingless">
+
+            <div id="hex1" class="hexagon-wrapper">
+              <div id="color1" class="hexagon">
+                <h1 id="hex_text">{{.Anzahl}}</h1>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="has_background_white kartei">
+        <p class="kartei_content">{{.Beschreibung}}</p>
+
+      </div>
+
+      <div class="has_background_white kartei">
+        <div class="columns kartei_content" style="margin-top:20px;">
+          <div class="column">
+            <nobr>Sichtbarkeit:</nobr>
+          </div>
+          <div class="column"><b>{{.Sichtbarkeit}}</b></div>
+        </div>
+        <div class="columns kartei_content">
+          <div class="column">
+            <nobr>Fortschritt:</nobr>
+          </div>
+          <div class="column"><b>{{.FortschrittP}}%</b></div>
+        </div>
+      </div>
+
+      <div class="has_background_white kartei is-paddingless">
+        <div class="columns kartei_content">
+          <div class="column is-one-third"><a href="in_lernen_frage" class="button is-warning is-small is-left">Lernen</a></div>
+          <div class="column is-one-third"><a href="in_karteikasten_bearbeiten" class="button is-success is-small is-centered">Bearbeiten</a></div>
+          <div class="column is-one-third"><a href="" class="button is-danger is-small move_right2"> <img style="max-width: 20px;" src="icons/Delete.svg" /> </a></div>
+        </div>
+
+      </div>
+    </div>
+    {{end}}
+  </div>
+
+
+
+
+</div>
+{{end}}

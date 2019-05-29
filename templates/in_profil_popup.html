@@ -1,0 +1,166 @@
+{{ define "content" }}
+
+<div class="column is-marginles has_background_primary_grey text_black column_height1">
+
+  <h1 class="text_black"><b>Mein Profil</b></h1>
+  <h2 class="text_black">Hier kannst du deine Profildaten aktualisieren oder ändern.</h2>
+
+
+  <div class="columns is-marginless">
+    <div class="column  is-paddingless is-4" style="margin-top: 2%;">
+      <div class="columns is-marginless is-multiline">
+
+        <div class="column has_background_white is-paddingless is-12" style="margin-bottom: 7%;">
+          <div class="green_line"> </div>
+
+          <div style="max-width: 35%; margin-left: auto; margin-right: auto; margin-top: 4%;"><img src="icons/Mein-Profil_black.svg" /></div>
+          <div style="text-align: center"> <a href="" class="button is-small is-warning text_white" style=" margin-top: 3%; "><b>Edit</b></a> </div>
+
+          <div style="text-align: center">
+            <h3 style="font-size: 28px">Max Mustermann</h3>
+          </div>
+          <div style="text-align: center; margin-bottom: 5%">
+            <h3> mustermann@example.com </h3>
+          </div>
+
+
+        </div>
+
+        <div class="column has_background_white is-paddingless is-12" style=" margin-bottom: 7%;">
+          <div class="green_line"> </div>
+
+          <h3 style="font-size: 22px;margin-top: 4%">Statistik<br><br></h3>
+
+          <div class="columns" style="margin-left: 2%">
+            <div class="column">
+              <div style="text-align: left; margin-bottom: 7%">
+                <h3>
+                  <nobr>Erstellte Karten :</nobr>
+                </h3>
+              </div>
+            </div>
+            <div class="column">
+              <div style="text-align: left; margin-bottom: 5%">
+                <h3>
+                  <nobr>24</nobr>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns" style="margin-left: 2%">
+            <div class="column">
+              <div style="text-align: left; margin-bottom: 5%">
+                <h3>
+                  <nobr>Erstellte Karteien :</nobr>
+                </h3>
+              </div>
+            </div>
+            <div class="column">
+              <div style="text-align: left; margin-bottom: 5%">
+                <h3>
+                  <nobr>7</nobr>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns" style="margin-left: 2%; margin-bottom: 4%">
+            <div class="column">
+              <div style="text-align: left; margin-bottom: 5%">
+                <h3>
+                  <nobr>Mitglied seit :</nobr>
+                </h3>
+              </div>
+            </div>
+            <div class="column">
+              <div style="text-align: left; margin-bottom: 5%">
+                <h3>
+                  <nobr>24.12.2018</nobr>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="column has_background_white is-paddingless" style="margin-left: 2%; margin-bottom: 1%; margin-top: 2%">
+      <div class="green_line"> </div>
+
+      <div class="input_fields" style="padding: 4%">
+
+        <div>
+          <h1 style="font-size: 28px; margin-bottom: 5%">Update der Profildaten</h1>
+        </div>
+
+        <div class="columns" style="margin-bottom: 8%">
+          <div class="column is-2"> <label class="label">
+              <nobr>Neue Email</nobr>
+            </label> </div>
+          <div class="column is-6 "> <input class="input input_field" type="email" placeholder="muster@example.com"> </div>
+          <div class="column ">
+            <p class="help is-danger info_text">Diese E-mail ist bereits vergeben!</p>
+          </div>
+        </div>
+
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label">Altes Password</label> </div>
+          <div class="column is-6"> <input class="input input_field" type="email" placeholder=""> </div>
+          <div class="column"></div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label">Neues Password</label> </div>
+          <div class="column is-6"> <input class="input input_field" type="email" placeholder=""> </div>
+          <div class="column">
+            <p class="help is-danger info_text"> Altes Password darf nicht mit neuem übereinstimmen</p>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column  is-2"> <label class="label">Password wiederholen</label> </div>
+          <div class="column is-6"> <input class="input input_field" type="email" placeholder=""> </div>
+          <div class="column"> </div>
+        </div>
+
+
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label"></label> </div>
+          <div class="column is-6" style="margin-top: 5%"> <a href="" class="button is-warning is-center text_white" style=" margin-bottom: 5%"><b>Speichern</b></a>
+
+            <!-- POPUP -->
+            <div class="modal is-active">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Löschen</p>
+                  <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                  <p> Bist du dir sicher, dass du dein Profil Löschen möchtest?</p>
+                </section>
+                <footer class="modal-card-foot">
+                  <a href="in_profil" class="button is-success">Profil behalten</a>
+                  <a href="out_startseite" class="button is-danger">Profil Löschen</a>
+                </footer>
+              </div>
+            </div>
+
+
+            <a href="in_profil_popup" class="button is-danger" id="showModal_del" style="margin-left: 0%"> <img style="width: 10%" src="icons/Delete.svg" /> </a>
+          </div>
+          <div class="column"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}

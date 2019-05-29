@@ -1,0 +1,66 @@
+{{ define "content" }}
+
+<div class="column is-marginles has_background_primary_grey text_black column_height1">
+
+  <h1 class="text_black"><b>Registrieren</b> </h1>
+  <div class="columns">
+
+    <div class="column has_background_white box is-paddingless">
+      <div class="green_line"></div>
+      <h6 class="normal_text text_black">Wir freuen uns, dass du dich bei BrainTrain anmelden möchtest. Bitte beachte, dass <b>pro E-Mail Adresse nur ein Nutzer</b> erstellt werden kann und jeder <b>Nutzername nur einmal vergeben</b> wird.</h6>
+
+
+      <div class="anmeldung_input">
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label">Nutzername</label> </div>
+          <div class="column is-6"> <input class="input input_field" type="email" placeholder="MeinBenutzername"> </div>
+          <div class="column">
+            <p class="help is-danger info_text">Dieser Nutzername ist bereits vergeben!</p>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label">E-Mail</label> </div>
+          <div class="column is-6"> <input class="input input_field" type="email" placeholder="example@email.com"> </div>
+          <div class="column">
+            <p class="help is-danger info_text">Diese E-Mail ist bereits vergeben!</p>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label">Password</label> </div>
+          <div class="column is-6"> <input class="input input_field" type="email" placeholder="Passwort eingeben"> </div>
+          <div class="column"></div>
+        </div>
+
+        <div class="columns">
+          <div class="column c1 is-2"> <label class="label">Password wiederholen</label> </div>
+          <div class="column is-6 c2"> <input class="input input_field" type="email" placeholder="Passwort wiederholen"> </div>
+          <div class="column c3">
+            <p class="help is-danger info_text">Die Passwörter stimmen nicht überein!</p>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label"></label> </div>
+          <div class="column is-6"> <input type="checkbox">Ich habe die nicht vorhandene Datenschutz- <br>erklärung zur Kenntnis genommen. </div>
+          <div class="column">
+            <p class="help is-danger info_text">Bitte setzen Sie hier einen Hacken!</p>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column is-2"> <label class="label"></label> </div>
+          <div class="column is-6"> <a class="button is-warning text_white" href="In_meine_karteikaesten"><b>Registrieren</b></a></div>
+          <div class="column"></div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+{{end}}
