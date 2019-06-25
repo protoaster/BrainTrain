@@ -178,6 +178,7 @@ func In_startseite(w http.ResponseWriter, r *http.Request) {
 }
 
 func In_karteikaesten(w http.ResponseWriter, r *http.Request) {
+
 	data := tmp_nL_Karteikasten{
 		MeineKarteien:         "",
 		Nutzername:            "",
@@ -189,22 +190,29 @@ func In_karteikaesten(w http.ResponseWriter, r *http.Request) {
 		Geisteswissenschaften: []Karteikasten{},
 		Sonstige:              []Karteikasten{},
 	}
-
+	test := ""
 	kk := []Karteikasten{}
 	kk = GetAlleKarteikaesten()
 
+	if r.Method == "GET" {
+
+		r.ParseForm()
+		test = r.FormValue("kategorie")
+		fmt.Println(test)
+	}
+
 	for _, element := range kk {
-		if element.Kategorie == "Naturwissenschaften" {
+		if element.Kategorie == "Naturwissenschaften" && (test == "Naturwissenschaften" || test == "Alle") {
 			data.Naturwissenschaften = append(data.Naturwissenschaften, element)
-		} else if element.Kategorie == "Sprachen" {
+		} else if element.Kategorie == "Sprachen" && (test == "Sprachen" || test == "Alle") {
 			data.Sprachen = append(data.Sprachen, element)
-		} else if element.Kategorie == "Gesellschaft" {
+		} else if element.Kategorie == "Gesellschaft" && (test == "Gesellschaft" || test == "Alle") {
 			data.Gesellschaft = append(data.Gesellschaft, element)
-		} else if element.Kategorie == "Wirtschaft" {
+		} else if element.Kategorie == "Wirtschaft" && (test == "Wirtschaft" || test == "Alle") {
 			data.Wirtschaft = append(data.Wirtschaft, element)
-		} else if element.Kategorie == "Geisteswissenschaften" {
+		} else if element.Kategorie == "Geisteswissenschaften" && (test == "Geisteswissenschaften" || test == "Alle") {
 			data.Geisteswissenschaften = append(data.Geisteswissenschaften, element)
-		} else {
+		} else if element.Kategorie == "Sonstige" && (test == "Sonstige" || test == "Alle") {
 			data.Sonstige = append(data.Sonstige, element)
 		}
 	}

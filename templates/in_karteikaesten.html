@@ -11,27 +11,37 @@
         <input class="input" type="text" placeholder="Suche">
       </div>
 
+
       <!-- TESTGITHUB -->
       <!-- DROPDOWN -->
-      <div class="dropdown is-right is-active is-pulled-right">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>Sortieren nach</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
+      <form class="is-pulled-right" method="GET">
+        <div class="control is-pulled-right">
+          <div class="select" style="width:100%;">
+            <select name="kategorie">
+              <option value="Alle">Alle</option>
+              <option value="Naturwissenschaften">Naturwissenschaften</option>
+              <option value="Sprachen">Sprachen</option>
+              <option value="Gesellschaft">Gesellschaft</option>
+              <option value="Wirtschaft">Wirtschaft</option>
+              <option value="Geisteswissenschaften">Geisteswissenschaften</option>
+              <option value="Sonstige">Sonstige</option>
+            </select>
+          </div>
+
         </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <!--		DROPDOWN CONTENT							-->
-        </div>
-      </div>
+        <input type="submit">
+      </form>
+
+
     </div>
 
 
     <!-- Karteikästen -->
 
     <div class="columns is-multiline move_right">
+
+
+
       <div class="column is-12 head_k">Naturwissenschaften</div>
       {{range .Naturwissenschaften}}
       <div class="column is-one-quarter kartei">

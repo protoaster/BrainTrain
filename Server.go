@@ -10,6 +10,7 @@ func main() {
 	//Eingeloggte Seiten
 	http.HandleFunc("/in_startseite", controller.In_startseite)
 	http.HandleFunc("/in_karteikaesten", controller.In_karteikaesten)
+	//	http.HandleFunc("/in_karteikaesten/kategorie", controller.In_karteikaesten)
 	http.HandleFunc("/in_karteikarten_erstellen", controller.In_karteikarten_erstellen)
 	http.HandleFunc("/in_karteikasten_anschauen", controller.In_karteikasten_anschauen)
 	http.HandleFunc("/in_karteikasten_bearbeiten", controller.In_karteikasten_bearbeiten)
@@ -23,8 +24,7 @@ func main() {
 	http.HandleFunc("/", controller.Out_startseite)
 	http.HandleFunc("/out_karteikaesten", controller.Out_karteikaesten)
 	http.HandleFunc("/out_karteikasten_anschauen", controller.Out_karteikasten_anschauen)
-  http.HandleFunc("/out_registrieren", controller.Out_registrieren)
-
+	http.HandleFunc("/out_registrieren", controller.Out_registrieren)
 
 	//bereitstellung der statischen inhalte
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./static/css"))))
