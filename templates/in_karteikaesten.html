@@ -18,13 +18,41 @@
         <div class="control is-pulled-right">
           <div class="select" style="width:100%;">
             <select name="kategorie">
-              <option value="Alle">Alle</option>
-              <option value="Naturwissenschaften">Naturwissenschaften</option>
-              <option value="Sprachen">Sprachen</option>
-              <option value="Gesellschaft">Gesellschaft</option>
-              <option value="Wirtschaft">Wirtschaft</option>
-              <option value="Geisteswissenschaften">Geisteswissenschaften</option>
-              <option value="Sonstige">Sonstige</option>
+              {{ if eq .Abfrage "Alle"}}
+              <option selected value="Alle">Alle</option>
+              {{else}}
+                <option value="Alle">Alle</option>
+                {{end}}
+                {{ if eq .Abfrage "Naturwissenschaften"}}
+                <option selected value="Naturwissenschaften">Naturwissenschaften</option>
+                {{else}}
+                  <option value="Naturwissenschaften">Naturwissenschaften</option>
+                  {{end}}
+                  {{if eq .Abfrage "Sprachen"}}
+                  <option selected value="Sprachen">Sprachen</option>
+                  {{else}}
+                    <option value="Sprachen">Sprachen</option>
+                    {{end}}
+                    {{ if eq .Abfrage "Gesellschaft"}}
+                    <option selected value="Gesellschaft">Gesellschaft</option>
+                    {{else}}
+                      <option value="Gesellschaft">Gesellschaft</option>
+                      {{end}}
+                      {{if eq .Abfrage "Wirtschaft"}}
+                      <option selected value="Wirtschaft">Wirtschaft</option>
+                      {{else}}
+                        <option value="Wirtschaft">Wirtschaft</option>
+                        {{end}}
+                        {{ if eq .Abfrage "Geisteswissenschaften"}}
+                        <option selected value="Geisteswissenschaften">Geisteswissenschaften</option>
+                        {{else}}
+                          <option value="Geisteswissenschaften">Geisteswissenschaften</option>
+                          {{end}}
+                          {{ if eq .Abfrage "Sonstige"}}
+                          <option selected value="Sonstige">Sonstige</option>
+                          {{else}}
+                            <option value="Sonstige">Sonstige</option>
+                            {{end}}
             </select>
           </div>
 

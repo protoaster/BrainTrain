@@ -35,6 +35,7 @@ type tmp_nL_Karteikasten struct {
 	Karteien              string
 	MeineKarteien         string
 	Nutzername            string
+	Abfrage               string
 	Naturwissenschaften   []Karteikasten
 	Sprachen              []Karteikasten
 	Gesellschaft          []Karteikasten
@@ -189,6 +190,7 @@ func In_karteikaesten(w http.ResponseWriter, r *http.Request) {
 		Wirtschaft:            []Karteikasten{},
 		Geisteswissenschaften: []Karteikasten{},
 		Sonstige:              []Karteikasten{},
+		Abfrage:               "Alle",
 	}
 	test := ""
 	kk := []Karteikasten{}
@@ -201,19 +203,27 @@ func In_karteikaesten(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(test)
 	}
 
+	data.Abfrage = test
+
 	for _, element := range kk {
 		if element.Kategorie == "Naturwissenschaften" && (test == "Naturwissenschaften" || test == "Alle") {
 			data.Naturwissenschaften = append(data.Naturwissenschaften, element)
+
 		} else if element.Kategorie == "Sprachen" && (test == "Sprachen" || test == "Alle") {
 			data.Sprachen = append(data.Sprachen, element)
+
 		} else if element.Kategorie == "Gesellschaft" && (test == "Gesellschaft" || test == "Alle") {
 			data.Gesellschaft = append(data.Gesellschaft, element)
+
 		} else if element.Kategorie == "Wirtschaft" && (test == "Wirtschaft" || test == "Alle") {
 			data.Wirtschaft = append(data.Wirtschaft, element)
+
 		} else if element.Kategorie == "Geisteswissenschaften" && (test == "Geisteswissenschaften" || test == "Alle") {
 			data.Geisteswissenschaften = append(data.Geisteswissenschaften, element)
+
 		} else if element.Kategorie == "Sonstige" && (test == "Sonstige" || test == "Alle") {
 			data.Sonstige = append(data.Sonstige, element)
+
 		}
 	}
 
