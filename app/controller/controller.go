@@ -430,7 +430,7 @@ func In_meine_karteikaesten(w http.ResponseWriter, r *http.Request) {
 	data := tmp_L_MeineKarteikaesten{
 		Nutzername:                "",
 		MeineKarteien:             "",
-		Karteien:                  strconv.Itoa(GetKarteikastenAnz()),
+		Karteien:                  "",
 		GespeicherteKarteikaesten: []Karteikasten{},
 		MeineKarteikaesten:        []Karteikasten{},
 	}
@@ -506,6 +506,7 @@ func In_meine_karteikaesten(w http.ResponseWriter, r *http.Request) {
 		data.GespeicherteKarteikaesten = append(data.GespeicherteKarteikaesten, temp_kk)
 	}
 
+	data.Karteien = strconv.Itoa(GetKarteikastenAnz())
 	data.MeineKarteien = strconv.Itoa(GetMeineKarteikaestenAnz(nutzer))
 	data.Nutzername = nutzer.Nutzername
 

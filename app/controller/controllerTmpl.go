@@ -20,7 +20,8 @@ type Nutzer struct {
 
 type alleNutzer struct {
 	_id    string
-	_rev   string
+	Ref    string `json:"_rev"`
+	TYP    string
 	Nutzer []Nutzer
 }
 
@@ -253,7 +254,7 @@ func getNutzerArr() (n []Nutzer, err error) {
 	var result map[string]interface{}
 
 	//result, err = db.Get("nutzer", nil)
-	result, err = db.Get("e3c55bfe2a805192b1ab0a0abf03a2d5", nil)
+	result, err = db.Get("nutzer", nil)
 
 	in := mapToJSON(result)
 
@@ -299,8 +300,9 @@ func AddErstellte(n Nutzer, neu int) error {
 
 	an := GetNutzerDatei()
 	var err error
+	var ek []int
 
-	fmt.Println(neu)
+	fmt.Println(an[0].Ref)
 
 	for i := 0; i <= len(an[0].Nutzer); i++ {
 
@@ -308,13 +310,14 @@ func AddErstellte(n Nutzer, neu int) error {
 
 			fmt.Println(i)
 			fmt.Println("komm ich hier hin")
-			ek := an[0].Nutzer[i-1].ErstellteKarteien
+			ek = an[0].Nutzer[i-1].ErstellteKarteien
 			fmt.Println(ek)
 			t := append(ek, neu)
 			fmt.Println(t)
 			an[0].Nutzer[i-1].ErstellteKarteien = t
 
-			err = db.Set("e3c55bfe2a805192b1ab0a0abf03a2d5", nutzer2Map(an[0]))
+			err = db.Set("nutzer", nutzer2Map(an[0]))
+			db.Commit()
 			fmt.Println(err)
 		}
 
@@ -338,6 +341,7 @@ func GetNutzerDatei() (an []alleNutzer) {
 	}`)
 
 	for _, element := range inmap {
+
 		var in = mapToJSON(element)
 
 		var temp_an = alleNutzer{}
@@ -345,6 +349,7 @@ func GetNutzerDatei() (an []alleNutzer) {
 			json.Unmarshal([]byte(in), &temp_an)
 
 			an = append(an, temp_an)
+
 		} else {
 			fmt.Println(err)
 		}
@@ -353,7 +358,7 @@ func GetNutzerDatei() (an []alleNutzer) {
 	//for _, element := range kk {
 	//	TerminalOutKarteikasten(element)
 	//}
-
+	fmt.Println(an)
 	return an
 }
 
