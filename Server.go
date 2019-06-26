@@ -10,7 +10,6 @@ func main() {
 	//Eingeloggte Seiten
 	http.HandleFunc("/in_startseite", controller.In_startseite)
 	http.HandleFunc("/in_karteikaesten", controller.In_karteikaesten)
-	//	http.HandleFunc("/in_karteikaesten/kategorie", controller.In_karteikaesten)
 	http.HandleFunc("/in_karteikarten_erstellen", controller.In_karteikarten_erstellen)
 	http.HandleFunc("/in_karteikasten_anschauen", controller.In_karteikasten_anschauen)
 	http.HandleFunc("/in_karteikasten_bearbeiten", controller.In_karteikasten_bearbeiten)

@@ -31,6 +31,18 @@ type out_menu struct {
 	Karteien string
 }
 
+type in_erstellen struct {
+	Karteien              string
+	MeineKarteien         string
+	Nutzername            string
+	Naturwissenschaften   []Karteikasten
+	Sprachen              []Karteikasten
+	Gesellschaft          []Karteikasten
+	Wirtschaft            []Karteikasten
+	Geisteswissenschaften []Karteikasten
+	Sonstige              []Karteikasten
+}
+
 type tmp_nL_Karteikasten struct {
 	Karteien              string
 	MeineKarteien         string
@@ -236,9 +248,13 @@ func In_karteikaesten(w http.ResponseWriter, r *http.Request) {
 }
 
 func In_karteikarten_erstellen(w http.ResponseWriter, r *http.Request) {
-	data := in_menu{MeineKarteien: "", Nutzername: "", Karteien: strconv.Itoa(GetKarteikastenAnz())}
-
+	data := in_erstellen{
+		MeineKarteien: "",
+		Nutzername:    "",
+		Karteien:      strconv.Itoa(GetKarteikastenAnz()),
+	}
 	tempMK := GetNutzerById(1)
+
 	data.MeineKarteien = strconv.Itoa(GetMeineKarteikaestenAnz(tempMK))
 	data.Nutzername = tempMK.Nutzername
 
@@ -418,8 +434,65 @@ func In_meine_karteikaesten(w http.ResponseWriter, r *http.Request) {
 		GespeicherteKarteikaesten: []Karteikasten{},
 		MeineKarteikaesten:        []Karteikasten{},
 	}
-
 	nutzer := GetNutzerById(1) //muss noch dynamisch gehlot werden
+
+	//#######################ADD###################
+
+	titel := ""
+	beschreibung := ""
+	kategorie := ""
+	radio := ""
+	if r.Method == "POST" {
+
+		r.ParseForm()
+		titel = r.FormValue("titel")
+		fmt.Println(titel)
+		beschreibung = r.FormValue("beschreibung")
+		fmt.Println(beschreibung)
+		kategorie = r.FormValue("kategorie")
+		fmt.Println(kategorie)
+		radio = r.FormValue("answer")
+		fmt.Println(radio)
+
+		OberKategorie := ""
+
+		if kategorie == "Biologie" || kategorie == "Chemie" || kategorie == "Elektrotechnik" || kategorie == "Informatik" || kategorie == "Mathematik" || kategorie == "Medizin" || kategorie == "Naturkunde" || kategorie == "Physik" {
+			OberKategorie = "Naturwissenschaften"
+		}
+		if kategorie == "Chinesisch" || kategorie == "Deutsch" || kategorie == "Englisch" || kategorie == "Französisch" || kategorie == "Griechisch" || kategorie == "Italienisch" || kategorie == "Latein" || kategorie == "Russisch" {
+			OberKategorie = "Sprachen"
+		}
+		if kategorie == "Ethik" || kategorie == "Geschichte" || kategorie == "Literatur" || kategorie == "Musik" || kategorie == "Politik" || kategorie == "Recht" || kategorie == "Soziales" || kategorie == "Sport" || kategorie == "Verkehrskunde" {
+			OberKategorie = "Gesellschaft"
+		}
+		if kategorie == "BWL" || kategorie == "Finanzen" || kategorie == "Landwirtschaft" || kategorie == "Marketing" || kategorie == "VWL" {
+			OberKategorie = "Wirtschaft"
+		}
+		if kategorie == "Kriminologie" || kategorie == "Philosophie" || kategorie == "Psychologie" || kategorie == "Pädagogik" || kategorie == "Theologie" {
+			OberKategorie = "Geisteswissenschaften"
+		}
+		if kategorie == "Sonstige" {
+			OberKategorie = "Sonstige"
+		}
+
+		kk := Karteikasten{}
+		kk.ID = GetKarteikastenAnz() + 1
+		kk.TYP = "Karteikasten"
+		kk.NutzerID = nutzer.ID
+		kk.Ersteller = nutzer.Nutzername
+		kk.Sichtbarkeit = radio
+		kk.Kategorie = OberKategorie
+		kk.Unterkategorie = kategorie
+		kk.Titel = titel
+		kk.Anzahl = 0
+		kk.Beschreibung = beschreibung
+
+		Add(kk)
+		//FUNKTIONIERT noch nicht
+		AddErstellte(nutzer, GetKarteikastenAnz())
+	}
+
+	//#############################################
 
 	for _, element := range nutzer.ErstellteKarteien {
 		temp_kk := GetKarteikastenByid(element)
@@ -433,9 +506,8 @@ func In_meine_karteikaesten(w http.ResponseWriter, r *http.Request) {
 		data.GespeicherteKarteikaesten = append(data.GespeicherteKarteikaesten, temp_kk)
 	}
 
-	tempMK := GetNutzerById(1)
-	data.MeineKarteien = strconv.Itoa(GetMeineKarteikaestenAnz(tempMK))
-	data.Nutzername = tempMK.Nutzername
+	data.MeineKarteien = strconv.Itoa(GetMeineKarteikaestenAnz(nutzer))
+	data.Nutzername = nutzer.Nutzername
 
 	t, _ := template.ParseFiles("./templates/in_menu.html", "./templates/in_meine_karteikaesten.html")
 	t.ExecuteTemplate(w, "layout", data)

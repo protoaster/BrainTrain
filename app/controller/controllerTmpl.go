@@ -40,6 +40,7 @@ type Fortschritt struct {
 type Karteikasten struct {
 	ID             int
 	_rev           string
+	TYP            string
 	NutzerID       int
 	Ersteller      string
 	Sichtbarkeit   string
@@ -252,7 +253,7 @@ func getNutzerArr() (n []Nutzer, err error) {
 	var result map[string]interface{}
 
 	//result, err = db.Get("nutzer", nil)
-	result, err = db.Get("nutzer", nil)
+	result, err = db.Get("e3c55bfe2a805192b1ab0a0abf03a2d5", nil)
 
 	in := mapToJSON(result)
 
@@ -270,6 +271,92 @@ func TerminalOutNutzer(n Nutzer) {
 	fmt.Println("Passwort 	: " + n.Passwort)
 }
 
+// ###########AddKarteikasten##
+func Add(kk Karteikasten) error {
+	// Convert Todo suct to map[string]interface as required by Save() method
+	KarteiK := kk2Map(kk)
+
+	// Delete _id and _rev from map, otherwise DB access will be denied (unauthorized)
+	delete(KarteiK, "_id")
+	delete(KarteiK, "_rev")
+	delete(KarteiK, "FortschrittP")
+
+	var db *couchdb.Database = GetDB()
+	// Add todo to DB
+	_, _, err := db.Save(KarteiK, nil)
+
+	if err != nil {
+		fmt.Printf("[Add] error: %s", err)
+	}
+
+	return err
+}
+
+//FUNKTIONIERT NOCH NICHT
+
+func AddErstellte(n Nutzer, neu int) error {
+	var db *couchdb.Database = GetDB()
+
+	an := GetNutzerDatei()
+	var err error
+
+	fmt.Println(neu)
+
+	for i := 0; i <= len(an[0].Nutzer); i++ {
+
+		if n.ID == i {
+
+			fmt.Println(i)
+			fmt.Println("komm ich hier hin")
+			ek := an[0].Nutzer[i-1].ErstellteKarteien
+			fmt.Println(ek)
+			t := append(ek, neu)
+			fmt.Println(t)
+			an[0].Nutzer[i-1].ErstellteKarteien = t
+
+			err = db.Set("e3c55bfe2a805192b1ab0a0abf03a2d5", nutzer2Map(an[0]))
+			fmt.Println(err)
+		}
+
+	}
+
+	return err
+
+}
+
+//FUNKTIONIERT NOCH NICHT
+func GetNutzerDatei() (an []alleNutzer) {
+	var db *couchdb.Database = GetDB()
+
+	var inmap []map[string]interface{}
+
+	inmap, err := db.QueryJSON(`
+	{
+		"selector": {
+		"TYP": "nutzer"
+		}
+	}`)
+
+	for _, element := range inmap {
+		var in = mapToJSON(element)
+
+		var temp_an = alleNutzer{}
+		if err == nil {
+			json.Unmarshal([]byte(in), &temp_an)
+
+			an = append(an, temp_an)
+		} else {
+			fmt.Println(err)
+		}
+	}
+
+	//for _, element := range kk {
+	//	TerminalOutKarteikasten(element)
+	//}
+
+	return an
+}
+
 // ############################### ENDE Nutzer Methoden ############################### //
 
 func mapToJSON(inMap map[string]interface{}) (s string) {
@@ -285,4 +372,20 @@ func mapToJSON(inMap map[string]interface{}) (s string) {
 	}
 
 	return jsonString
+}
+
+func kk2Map(kk Karteikasten) map[string]interface{} {
+	var doc map[string]interface{}
+	tJSON, _ := json.Marshal(kk)
+	json.Unmarshal(tJSON, &doc)
+
+	return doc
+}
+
+func nutzer2Map(an alleNutzer) map[string]interface{} {
+	var doc map[string]interface{}
+	tJSON, _ := json.Marshal(an)
+	json.Unmarshal(tJSON, &doc)
+
+	return doc
 }
